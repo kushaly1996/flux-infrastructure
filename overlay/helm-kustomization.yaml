@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ingress-nginx
+
+---
+
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: infrasturcture-ingress-nginx
+  namespace: flux-system
+spec:
+  interval: 10m0s # adjust as needed
+  retryInterval: 1m0s
+  timeout: 2m0s
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: flux-infrastructure
+    namespace: flux-system
+  path: ./base/nginx-ingrss/
+  prune: true
+  targetNamespace: nginx-ingress
