@@ -18,4 +18,3 @@ spec:
     name: flux-infrastructure
   path: ./base/nginx-ingress/
   prune: true
-  targetNamespace: nginx-ingress
