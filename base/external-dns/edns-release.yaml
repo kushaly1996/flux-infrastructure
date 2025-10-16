@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 9.0.3  # pick latest from Bitnami repo
+      version: 10.3.0  # pick latest from Bitnami repo
       sourceRef:
         kind: HelmRepository
         name: bitnami
