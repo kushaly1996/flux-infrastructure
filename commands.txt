@@ -1,0 +1,14 @@
+flux get kustomization infrastructure-ingress-nginx -n flux-system
+
+
+flux reconcile kustomization infrastructure-ingress-nginx -n flux-system --with-source
+
+flux reconcile helmrelease nginx-ingress -n nginx-ingress
+
+flux get sources helm -n nginx-ingress
+
+
+
+kubectl apply -f system.yaml
+kubectl apply -f nginx-kustomization.yaml
+kubectl apply -f edns-kustomization.yaml
