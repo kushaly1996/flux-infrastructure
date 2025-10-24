@@ -30,7 +30,8 @@ spec:
       resourceGroup: "rg-aks-kubenet-demo"
       useManagedIdentityExtension: true
       userAssignedIdentityID: "e673ce83-ad6c-4483-a583-8624d983798a"
-
+      azureConfigFile: ""
+      cloud: "AzurePublicCloud"
     podLabels:
       app: external-dns
     logLevel: info

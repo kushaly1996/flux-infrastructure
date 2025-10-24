@@ -1,3 +1,5 @@
+flux reconcile source git flux-infrastructure
+
 flux get kustomization infrastructure-ingress-nginx -n flux-system
 
 
@@ -11,4 +13,11 @@ flux get sources helm -n nginx-ingress
 
 kubectl apply -f system.yaml
 kubectl apply -f nginx-kustomization.yaml
+kubectl get kustomization -n flux-system infrastructure-ingress-nginx -o yaml
+flux reconcile kustomization infrastructure-ingress-nginx -n flux-system --with-source
+
+
+
 kubectl apply -f edns-kustomization.yaml
+kubectl get kustomization -n flux-system external-dns -o yaml
+flux reconcile kustomization external-dns -n flux-system --with-source
