@@ -32,6 +32,19 @@ spec:
       userAssignedIdentityID: "e673ce83-ad6c-4483-a583-8624d983798a"
       azureConfigFile: ""
       cloud: "AzurePublicCloud"
+    secretConfiguration:
+      enabled: true
+      mountPath: "/etc/kubernetes/"
+      data:
+        azure.json: |
+          {
+            "tenantId": "d6ffa4c3-a891-42ac-bc50-1d57b130759c",
+            "subscriptionId": "50a5d8ec-f7db-429b-8083-7142979a140f",
+            "resourceGroup": "rg-aks-kubenet-demo",
+            "useManagedIdentityExtension": true,
+            "userAssignedIdentityID": "e673ce83-ad6c-4483-a583-8624d983798a",
+            "cloud": "AzurePublicCloud"
+          }
     podLabels:
       app: external-dns
     logLevel: info
