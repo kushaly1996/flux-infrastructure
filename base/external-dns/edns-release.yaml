@@ -24,14 +24,21 @@ spec:
       - service
       - ingress
 
-    azure:
-      tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
-      subscriptionId: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
-      resourceGroup: "rg-aks-kubenet-demo"
-      useManagedIdentityExtension: true
-      userAssignedIdentityID: "3e19ab28-aec3-4b2e-9134-33d559bd425d"
-      azureConfigFile: ""
-      cloud: "AzurePublicCloud"
+    extraEnvVars:
+      - name: AZURE_TENANT_ID
+        value: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+      - name: AZURE_SUBSCRIPTION_ID
+        value: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
+      - name: AZURE_RESOURCE_GROUP
+        value: "rg-aks-kubenet-demo"
+      - name: AZURE_CLOUD
+        value: "AzurePublicCloud"
+      - name: AZURE_USE_MANAGED_IDENTITY_EXTENSION
+        value: "true"
+      - name: AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID
+        value: "3e19ab28-aec3-4b2e-9134-33d559bd425d"
+
+        
     secretConfiguration:
       enabled: true
       mountPath: "/etc/kubernetes/"
