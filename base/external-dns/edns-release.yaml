@@ -29,7 +29,7 @@ spec:
       subscriptionId: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
       resourceGroup: "rg-aks-kubenet-demo"
       useManagedIdentityExtension: true
-      userAssignedIdentityID: "5fe7709d-f82c-4f4a-8d8f-1923a2057ae6"
+      userAssignedIdentityID: "3e19ab28-aec3-4b2e-9134-33d559bd425d"
       azureConfigFile: ""
       cloud: "AzurePublicCloud"
     secretConfiguration:
@@ -42,7 +42,7 @@ spec:
             "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
             "resourceGroup": "rg-aks-kubenet-demo",
             "useManagedIdentityExtension": true,
-            "userAssignedIdentityID": "5fe7709d-f82c-4f4a-8d8f-1923a2057ae6",
+            "userAssignedIdentityID": "3e19ab28-aec3-4b2e-9134-33d559bd425d",
             "cloud": "AzurePublicCloud"
           }
     podLabels:
