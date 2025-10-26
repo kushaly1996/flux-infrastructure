@@ -24,7 +24,8 @@ kubectl describe helmrelease -n nginx-ingress nginx-ingress
 kubectl apply -f edns-kustomization.yaml
 kubectl get kustomization -n flux-system external-dns -o yaml
 flux reconcile kustomization external-dns -n flux-system --with-source
-
+kubectl get pods -n external-dns
+kubectl logs external-dns-58df75d99c-mkssl -n external-dns
 
 az aks show -n aks-kubenet-cluster -g rg-aks-kubenet-demo --query identity
 
@@ -45,3 +46,5 @@ az vmss identity assign \
   --identities 0eb5f041-42ad-4774-a6e5-d9ebca24f1e7 
 
 az vmss list -g MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus -o table
+
+az identity show -g rg-aks-kubenet-demo -n externaldns-identity --query clientId -o tsv

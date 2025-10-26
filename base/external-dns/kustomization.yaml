@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - edns-repositories.yaml
   - edns-release.yaml  
+  - sa-edns.yaml

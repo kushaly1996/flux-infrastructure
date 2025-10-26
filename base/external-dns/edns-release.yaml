@@ -36,7 +36,10 @@ spec:
       - name: AZURE_USE_MANAGED_IDENTITY_EXTENSION
         value: "true"
       - name: AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID
-        value: "4c970dec-2393-4052-be9a-d51b570e6213"
+        value: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
+
+    azure:
+      useworkloadIdentityExtension: true
 
         
     secretConfiguration:
@@ -48,10 +51,15 @@ spec:
             "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
             "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
             "resourceGroup": "rg-aks-kubenet-demo",
-            "useManagedIdentityExtension": true,
-            "userAssignedIdentityID": "4c970dec-2393-4052-be9a-d51b570e6213",
+            "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
+            "useworkloadIdentityExtension": true,
             "cloud": "AzurePublicCloud"
           }
     podLabels:
       app: external-dns
     logLevel: info
+
+    serviceAccount:
+      name: external-dns
+      annotations:
+        azure.workload.identity/client-id: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
