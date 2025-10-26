@@ -16,8 +16,32 @@ kubectl apply -f nginx-kustomization.yaml
 kubectl get kustomization -n flux-system infrastructure-ingress-nginx -o yaml
 flux reconcile kustomization infrastructure-ingress-nginx -n flux-system --with-source
 
+# Check the status of the HelmRelease
+kubectl get helmrelease -A | grep nginx-ingress
+kubectl describe helmrelease -n nginx-ingress nginx-ingress
 
 
 kubectl apply -f edns-kustomization.yaml
 kubectl get kustomization -n flux-system external-dns -o yaml
 flux reconcile kustomization external-dns -n flux-system --with-source
+
+
+az aks show -n aks-kubenet-cluster -g rg-aks-kubenet-demo --query identity
+
+az role assignment create \
+  --assignee 3e19ab28-aec3-4b2e-9134-33d559bd425d \
+  --role "DNS Zone Contributor" \
+  --scope /subscriptions/c29cf98c-ebc4-49e6-bc42-a01527606175/resourceGroups/rg-aks-kubenet-demo/providers/Microsoft.Network/privateDnsZones/internal.example.com
+
+
+az vmss identity assign \
+  --resource-group MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus \
+  --name aks-apppool-14778740-vmss \
+  --identities 0eb5f041-42ad-4774-a6e5-d9ebca24f1e7 
+
+az vmss identity assign \
+  --resource-group MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus \
+  --name aks-systempool-10803400-vmss \
+  --identities 0eb5f041-42ad-4774-a6e5-d9ebca24f1e7 
+
+az vmss list -g MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus -o table

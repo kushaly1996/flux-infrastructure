@@ -36,7 +36,7 @@ spec:
       - name: AZURE_USE_MANAGED_IDENTITY_EXTENSION
         value: "true"
       - name: AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID
-        value: "528ad6e4-ad6b-477e-be33-5dba8c5d50f4"
+        value: "4c970dec-2393-4052-be9a-d51b570e6213"
 
         
     secretConfiguration:
@@ -49,7 +49,7 @@ spec:
             "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
             "resourceGroup": "rg-aks-kubenet-demo",
             "useManagedIdentityExtension": true,
-            "userAssignedIdentityID": "528ad6e4-ad6b-477e-be33-5dba8c5d50f4",
+            "userAssignedIdentityID": "4c970dec-2393-4052-be9a-d51b570e6213",
             "cloud": "AzurePublicCloud"
           }
     podLabels:
