@@ -25,11 +25,11 @@ spec:
       - ingress
 
     azure:
-      tenantId: "d6ffa4c3-a891-42ac-bc50-1d57b130759c"
-      subscriptionId: "50a5d8ec-f7db-429b-8083-7142979a140f"
+      tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+      subscriptionId: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
       resourceGroup: "rg-aks-kubenet-demo"
       useManagedIdentityExtension: true
-      userAssignedIdentityID: "e673ce83-ad6c-4483-a583-8624d983798a"
+      userAssignedIdentityID: "0eb5f041-42ad-4774-a6e5-d9ebca24f1e7"
       azureConfigFile: ""
       cloud: "AzurePublicCloud"
     secretConfiguration:
@@ -38,11 +38,11 @@ spec:
       data:
         azure.json: |
           {
-            "tenantId": "d6ffa4c3-a891-42ac-bc50-1d57b130759c",
-            "subscriptionId": "50a5d8ec-f7db-429b-8083-7142979a140f",
+            "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
+            "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
             "resourceGroup": "rg-aks-kubenet-demo",
             "useManagedIdentityExtension": true,
-            "userAssignedIdentityID": "e673ce83-ad6c-4483-a583-8624d983798a",
+            "userAssignedIdentityID": "0eb5f041-42ad-4774-a6e5-d9ebca24f1e7",
             "cloud": "AzurePublicCloud"
           }
     podLabels:
