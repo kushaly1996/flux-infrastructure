@@ -24,37 +24,38 @@ spec:
       - service
       - ingress
 
-    extraEnvVars:
-      - name: AZURE_TENANT_ID
-        value: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
-      - name: AZURE_SUBSCRIPTION_ID
-        value: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
-      - name: AZURE_RESOURCE_GROUP
-        value: "rg-aks-kubenet-demo"
-      - name: AZURE_CLOUD
-        value: "AzurePublicCloud"
-      - name: AZURE_USE_MANAGED_IDENTITY_EXTENSION
-        value: "true"
-      - name: AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID
-        value: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
+    # extraEnvVars:
+    #   - name: AZURE_TENANT_ID
+    #     value: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+    #   - name: AZURE_SUBSCRIPTION_ID
+    #     value: "5c29cf98c-ebc4-49e6-bc42-a01527606175"
+    #   - name: AZURE_RESOURCE_GROUP
+    #     value: "rg-aks-kubenet-demo"
+    #   - name: AZURE_CLOUD
+    #     value: "AzurePublicCloud"
+    #   - name: AZURE_USE_MANAGED_IDENTITY_EXTENSION
+    #     value: "true"
+    #   - name: AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID
+    #     value: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
 
     azure:
       useworkloadIdentityExtension: true
+      userAssignedIdentityClientID: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
 
         
-    secretConfiguration:
-      enabled: true
-      mountPath: "/etc/kubernetes/"
-      data:
-        azure.json: |
-          {
-            "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
-            "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
-            "resourceGroup": "rg-aks-kubenet-demo",
-            "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
-            "useworkloadIdentityExtension": true,
-            "cloud": "AzurePublicCloud"
-          }
+    # secretConfiguration:
+    #   enabled: true
+    #   mountPath: "/etc/kubernetes/"
+    #   data:
+    #     azure.json: |
+    #       {
+    #         "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
+    #         "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
+    #         "resourceGroup": "rg-aks-kubenet-demo",
+    #         "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
+    #         "useworkloadIdentityExtension": true,
+    #         "cloud": "AzurePublicCloud"
+    #       }
     podLabels:
       app: external-dns
     logLevel: info
