@@ -44,7 +44,7 @@ spec:
       resourceGroup: "rg-aks-kubenet-demo"
       subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
       tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
-
+      configFile: ""
         
     # secretConfiguration:
     #   enabled: true
