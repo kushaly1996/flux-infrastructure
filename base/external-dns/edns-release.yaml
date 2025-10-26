@@ -45,19 +45,37 @@ spec:
       subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
       tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
         
-    secretConfiguration:
-      enabled: true
-      mountPath: "/etc/kubernetes/"
-      data:
-        azure.json: |
-          {
-            "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
-            "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
-            "resourceGroup": "rg-aks-kubenet-demo",
-            "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
-            "useworkloadIdentityExtension": true,
-            "cloud": "AzurePublicCloud"
-          }
+    # secretConfiguration:
+    #   enabled: true
+    #   mountPath: "/etc/kubernetes/"
+    #   data:
+    #     azure.json: |
+    #       {
+    #         "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
+    #         "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
+    #         "resourceGroup": "rg-aks-kubenet-demo",
+    #         "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
+    #         "useworkloadIdentityExtension": true,
+    #         "cloud": "AzurePublicCloud"
+    #       }
+
+
+    args:
+      - --log-level=info
+      - --domain-filter=internal.example.com
+      - --provider=azure
+      - --azure-resource-group=rg-aks-kubenet-demo
+      - --azure-subscription-id=c29cf98c-ebc4-49e6-bc42-a01527606175
+      - --azure-tenant-id=6f818e3d-ede0-4045-a285-a01527606175
+      - --azure-user-assigned-identity-client-id=26cab066-1b8b-4cfd-bf03-acf2fccb4641
+      - --azure-use-workload-identity-extension=true
+      - --source=service
+      - --source=ingress
+      - --policy=sync
+      - --txt-owner-id=aks-externaldns
+      - --registry=txt
+
+      
     podLabels:
       app: external-dns
     logLevel: info
