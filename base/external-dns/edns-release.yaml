@@ -41,7 +41,7 @@ spec:
     azure:
       useManagedIdentityExtension: false
       useWorkloadIdentityExtension: true
-      userAssignedIdentityClientID: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
+      userAssignedIdentityClientID: "671e3865-b6fe-4845-a12b-0843d73930fb"
       resourceGroup: "rg-aks-kubenet-demo"
       subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
       tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
@@ -69,4 +69,4 @@ spec:
     serviceAccount:
       name: external-dns
       annotations:
-        azure.workload.identity/client-id: "26cab066-1b8b-4cfd-bf03-acf2fccb4641"
+        azure.workload.identity/client-id: "671e3865-b6fe-4845-a12b-0843d73930fb"
