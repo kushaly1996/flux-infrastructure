@@ -47,6 +47,7 @@ spec:
 
     podLabels:
       app: external-dns
+      azure.workload.identity/use: "true"
     logLevel: info
 
     serviceAccount:
