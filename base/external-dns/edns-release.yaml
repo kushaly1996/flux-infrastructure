@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: external-dns
-      version: 1.19.0  # pick latest from Bitnami repo
+      version: 1.19.0
       sourceRef:
         kind: HelmRepository
         name: external-dns
@@ -30,33 +30,17 @@ spec:
       - --azure-user-assigned-identity-client-id=671e3865-b6fe-4845-a12b-0843d73930fb
 
     azure:
-      useManagedIdentityExtension: false
       userAssignedIdentityClientID: "671e3865-b6fe-4845-a12b-0843d73930fb"
       resourceGroup: "rg-aks-kubenet-demo"
       subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
       tenantId: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
       config: ""
-        
-    # secretConfiguration:
-    #   enabled: true
-    #   mountPath: "/etc/kubernetes/"
-    #   data:
-    #     azure.json: |
-    #       {
-    #         "tenantId": "6f818e3d-ede0-4045-a285-0a6c77b4cabb",
-    #         "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
-    #         "resourceGroup": "rg-aks-kubenet-demo",
-    #         "userAssignedIdentityID": "26cab066-1b8b-4cfd-bf03-acf2fccb4641",
-    #         "useworkloadIdentityExtension": true,
-    #         "cloud": "AzurePublicCloud"
-    #       }
-
-
-    podLabels:
-      app: external-dns
-    logLevel: info
 
     serviceAccount:
       name: external-dns
       annotations:
+        azure.workload.identity/client-id: "671e3865-b6fe-4845-a12b-0843d73930fb"
+
+    logLevel: info
+
         azure.workload.identity/client-id: "671e3865-b6fe-4845-a12b-0843d73930fb"
