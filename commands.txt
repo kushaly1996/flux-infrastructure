@@ -25,7 +25,8 @@ kubectl apply -f edns-kustomization.yaml
 kubectl get kustomization -n flux-system external-dns -o yaml
 flux reconcile kustomization external-dns -n flux-system --with-source
 kubectl get pods -n external-dns
-kubectl logs external-dns-58df75d99c-mkssl -n external-dns
+kubectl logs external-dns-6658977654-p6rlv -n external-dns
+kubectl get deployment external-dns -n external-dns -o yaml
 
 az aks show -n aks-kubenet-cluster -g rg-aks-kubenet-demo --query identity
 
