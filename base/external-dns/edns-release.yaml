@@ -41,7 +41,7 @@ spec:
           {
             "subscriptionId": "c29cf98c-ebc4-49e6-bc42-a01527606175",
             "resourceGroup": "rg-aks-kubenet-demo",
-            "useworkloadIdentityExtension": true,
+            "useworkloadIdentityExtension": true
           }
 
 
