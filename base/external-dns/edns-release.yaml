@@ -25,15 +25,10 @@ spec:
       - ingress
 
     extraArgs:
-      - --provider=azure
       - --azure-resource-group=rg-aks-kubenet-demo
       - --azure-subscription-id=c29cf98c-ebc4-49e6-bc42-a01527606175
       - --azure-user-assigned-identity-client-id=671e3865-b6fe-4845-a12b-0843d73930fb
       - --azure-use-workload-identity-extension=true
-      - --domain-filter=internal.example.com
-      - --registry=txt
-      - --policy=sync
-      - --txt-owner-id=aks-externaldns
 
     azure:
       useManagedIdentityExtension: false
