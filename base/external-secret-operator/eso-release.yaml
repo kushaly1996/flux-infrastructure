@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: external-secrets
+  namespace: external-secrets 
+spec:
+  releaseName: external-secrets
+  interval: 5m
+  chart:
+    spec:
+      chart: external-secrets
+      version: 0.9.1 
+      sourceRef:
+        kind: HelmRepository
+        name: external-secrets
+        namespace: flux-system
+  install:
+    createNamespace: true 
+  values:
+    podLabels:
+      azure.workload.identity/use: "true"
+
+    # 2. Configuration for the Service Account
+    serviceAccount:
+      name: external-secrets
+      create: true
+      annotations:
+        azure.workload.identity/client-id: "671e3865-b6fe-4845-a12b-0843d73930fb" # <-- Use your Client ID
+        azure.workload.identity/tenant-id: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+
+    installCRDs: true
