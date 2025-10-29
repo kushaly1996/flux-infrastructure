@@ -17,6 +17,10 @@ spec:
   install:
     createNamespace: true
   values:
+    crds:
+      kubectl:
+        image:
+          tag: "1.30"
     configuration:
       plugins:
         - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
@@ -55,3 +59,4 @@ spec:
       
     credentials:
       useSecret: false
+
