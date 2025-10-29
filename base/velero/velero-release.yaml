@@ -1,0 +1,55 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: velero
+  namespace: velero
+spec:
+  releaseName: velero
+  interval: 5m
+  chart:
+    spec:
+      chart: velero
+      version: 2.34.0
+      sourceRef:
+        kind: HelmRepository
+        name: velero
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    configuration:
+      provider: azure
+      plugins:
+        - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
+      
+      # Backup Storage Location (Blob Storage)
+      backupStorageLocation:
+        name: azure
+        bucket: "<YOUR_BLOB_CONTAINER_NAME>" # e.g., velero-backups-12345
+        config:
+          resourceGroup: "<STORAGE_ACCOUNT_RESOURCE_GROUP>"
+          storageAccount: "<YOUR_STORAGE_ACCOUNT_NAME>"
+          subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
+          cloudName: AzurePublicCloud
+
+      # Volume Snapshot Location (AKS Node Resource Group)
+      volumeSnapshotLocation:
+        name: azure-default
+        config:
+          # This RG is typically the AKS Node Resource Group (MC_...)
+          resourceGroup: "<AKS_NODE_RESOURCE_GROUP_NAME>"
+          subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
+          apiTimeout: "5m"
+
+    serviceAccount:
+      server:
+        create: true
+        name: velero # Velero's default Service Account name
+        annotations:
+          azure.workload.identity/client-id: "671e3865-b6fe-4845-a12b-0843d73930fb" # <-- Use your Terraform UAMI Client ID
+
+    podLabels:
+      azure.workload.identity/use: "true"
+      
+    credentials:
+      useSecret: false
