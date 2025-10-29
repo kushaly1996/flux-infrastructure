@@ -24,6 +24,7 @@ spec:
       # Backup Storage Location (Blob Storage)
       backupStorageLocations:
         - name: azure
+          provider: azure
           bucket: "velero-backups" # e.g., velero-backups-12345
           config:
             resourceGroup: "rg-aks-kubenet-demo"
@@ -34,6 +35,7 @@ spec:
       # Volume Snapshot Location (AKS Node Resource Group)
       volumeSnapshotLocations:
         - name: azure-default
+          provider: azure
           config:
             # This RG is typically the AKS Node Resource Group (MC_...)
             resourceGroup: "MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus"
