@@ -25,10 +25,10 @@ spec:
       # Backup Storage Location (Blob Storage)
       backupStorageLocation:
         name: azure
-        bucket: "<YOUR_BLOB_CONTAINER_NAME>" # e.g., velero-backups-12345
+        bucket: "velero-backups" # e.g., velero-backups-12345
         config:
-          resourceGroup: "<STORAGE_ACCOUNT_RESOURCE_GROUP>"
-          storageAccount: "<YOUR_STORAGE_ACCOUNT_NAME>"
+          resourceGroup: "rg-aks-kubenet-demo"
+          storageAccount: "kushalvelerobackup"
           subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
           cloudName: AzurePublicCloud
 
@@ -37,7 +37,7 @@ spec:
         name: azure-default
         config:
           # This RG is typically the AKS Node Resource Group (MC_...)
-          resourceGroup: "<AKS_NODE_RESOURCE_GROUP_NAME>"
+          resourceGroup: "rg-aks-kubenet-demo"
           subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
           apiTimeout: "5m"
 
