@@ -23,22 +23,22 @@ spec:
       
       # Backup Storage Location (Blob Storage)
       backupStorageLocations:
-        name: azure
-        bucket: "velero-backups" # e.g., velero-backups-12345
-        config:
-          resourceGroup: "rg-aks-kubenet-demo"
-          storageAccount: "kushalvelerobackup"
-          subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
-          cloudName: AzurePublicCloud
+        - name: azure
+          bucket: "velero-backups" # e.g., velero-backups-12345
+          config:
+            resourceGroup: "rg-aks-kubenet-demo"
+            storageAccount: "kushalvelerobackup"
+            subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
+            cloudName: AzurePublicCloud
 
       # Volume Snapshot Location (AKS Node Resource Group)
       volumeSnapshotLocations:
-        name: azure-default
-        config:
-          # This RG is typically the AKS Node Resource Group (MC_...)
-          resourceGroup: "MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus"
-          subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
-          apiTimeout: "5m"
+        - name: azure-default
+          config:
+            # This RG is typically the AKS Node Resource Group (MC_...)
+            resourceGroup: "MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus"
+            subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
+            apiTimeout: "5m"
 
     serviceAccount:
       server:
