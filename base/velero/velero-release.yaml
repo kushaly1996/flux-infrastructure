@@ -18,12 +18,11 @@ spec:
     createNamespace: true
   values:
     configuration:
-      provider: azure
       plugins:
         - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
       
       # Backup Storage Location (Blob Storage)
-      backupStorageLocation:
+      backupStorageLocations:
         name: azure
         bucket: "velero-backups" # e.g., velero-backups-12345
         config:
@@ -33,11 +32,11 @@ spec:
           cloudName: AzurePublicCloud
 
       # Volume Snapshot Location (AKS Node Resource Group)
-      volumeSnapshotLocation:
+      volumeSnapshotLocations:
         name: azure-default
         config:
           # This RG is typically the AKS Node Resource Group (MC_...)
-          resourceGroup: "rg-aks-kubenet-demo"
+          resourceGroup: "MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus"
           subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
           apiTimeout: "5m"
 
