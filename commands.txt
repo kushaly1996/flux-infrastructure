@@ -15,6 +15,7 @@ kubectl apply -f system.yaml
 kubectl apply -f nginx-kustomization.yaml
 kubectl get kustomization -n flux-system infrastructure-ingress-nginx -o yaml
 flux reconcile kustomization infrastructure-ingress-nginx -n flux-system --with-source
+flux reconcile kustomization velero -n flux-system --with-source
 
 # Check the status of the HelmRelease
 kubectl get helmrelease -A | grep nginx-ingress
@@ -24,6 +25,7 @@ kubectl describe helmrelease -n nginx-ingress nginx-ingress
 kubectl apply -f edns-kustomization.yaml
 kubectl get kustomization -n flux-system external-dns -o yaml
 flux reconcile kustomization external-dns -n flux-system --with-source
+ kubectl rollout restart deployment external-dns -n external-dns
 kubectl get pods -n external-dns
 kubectl logs external-dns-6658977654-p6rlv -n external-dns
 kubectl get deployment external-dns -n external-dns -o yaml
@@ -49,3 +51,6 @@ az vmss identity assign \
 az vmss list -g MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus -o table
 
 az identity show -g rg-aks-kubenet-demo -n externaldns-identity --query clientId -o tsv
+
+
+flux reconcile kustomization external-secret -n flux-system --with-source

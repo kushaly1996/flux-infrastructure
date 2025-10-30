@@ -18,9 +18,6 @@ spec:
     createNamespace: true
   values:
     crds:
-      kubectl:
-        image:
-          tag: "1.30"
     configuration:
       plugins:
         - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
@@ -53,6 +50,7 @@ spec:
         annotations:
           azure.workload.identity/client-id: "5bae3c20-8ea1-4a5c-beaf-83ae2b512e1b" # <-- Use your Terraform UAMI Client ID
           azure.workload.identity/tenant-id: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+          azure.workload.identity/use: "true"
 
     podLabels:
       azure.workload.identity/use: "true"
@@ -60,3 +58,28 @@ spec:
     credentials:
       useSecret: false
 
+    initContainers:
+      - name: velero-plugin-for-microsoft-azure
+        image: velero/velero-plugin-for-microsoft-azure:v1.12.2
+        volumeMounts:
+          - name: plugins
+            mountPath: /target
+
+    kubectl:
+      - image:
+          repository: bitnami/kubectl
+        resources:
+          limits:
+            cpu: 128m
+          requests:
+            cpu: 50m
+            memory: 64Mi
+
+    image:
+      repository: velero/velero
+      tag: v1.16.2
+      pullPolicy: IfNotPresent
+
+    podLabels:
+      app: velero
+      azure.workload.identity/use: "true"
