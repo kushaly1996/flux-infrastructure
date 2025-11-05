@@ -65,14 +65,14 @@ spec:
             name: plugins
 
     kubectl:
-      - image:
-          repository: bitnami/kubectl
-        resources:
-          limits:
-            cpu: 128m
-          requests:
-            cpu: 50m
-            memory: 64Mi
+      image:
+        repository: bitnami/kubectl
+      resources:
+        limits:
+          cpu: 128m
+        requests:
+          cpu: 50m
+          memory: 64Mi
 
     image:
       repository: velero/velero
