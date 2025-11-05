@@ -83,3 +83,15 @@ spec:
     podLabels:
       app: velero
       azure.workload.identity/use: "true"
+
+    deployNodeAgent: false
+    nodeAgent:
+      podLabels:
+        azure.workload.identity/use: "true"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 128Mi
+          requests:
+            cpu: 50m
+            memory: 64Mi
