@@ -35,9 +35,10 @@ spec:
             cloudName: AzurePublicCloud
 
       # Volume Snapshot Location (AKS Node Resource Group)
-      volumeSnapshotLocations:
+      volumeSnapshotLocation:
         - name: azure-default
           provider: azure
+          default: false
           config:
             # This RG is typically the AKS Node Resource Group (MC_...)
             resourceGroup: "MC_rg-aks-kubenet-demo_aks-kubenet-cluster_eastus"
