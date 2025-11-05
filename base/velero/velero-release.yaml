@@ -32,7 +32,6 @@ spec:
             resourceGroup: "rg-aks-kubenet-demo"
             storageAccount: "kushalvelerobackup"
             subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
-            cloudName: AzurePublicCloud
 
       # Volume Snapshot Location (AKS Node Resource Group)
       volumeSnapshotLocation:
