@@ -25,7 +25,7 @@ spec:
       name: external-secrets
       create: true
       annotations:
-        azure.workload.identity/client-id: "9937d1fe-25c8-4839-9afe-27009ca98fb7" # <-- Use your Client ID
+        azure.workload.identity/client-id: "c290e443-4c20-460a-80ae-c45152869d69" # <-- Use your Client ID
         azure.workload.identity/tenant-id: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
 
     installCRDs: true

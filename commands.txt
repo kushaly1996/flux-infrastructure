@@ -20,7 +20,7 @@ flux reconcile kustomization velero -n flux-system --with-source
 # Check the status of the HelmRelease
 kubectl get helmrelease -A | grep nginx-ingress
 kubectl describe helmrelease -n nginx-ingress nginx-ingress
-
+kubectl describe helmrelease -n velero velero
 
 kubectl apply -f edns-kustomization.yaml
 kubectl get kustomization -n flux-system external-dns -o yaml

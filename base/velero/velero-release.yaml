@@ -9,15 +9,14 @@ spec:
   chart:
     spec:
       chart: velero
-      version: 8.7.0
+      version: 1.16.1
       sourceRef:
         kind: HelmRepository
         name: velero
         namespace: flux-system
   install:
     createNamespace: true
-  values:
-    crds:
+  values: 
     configuration:
       plugins:
         - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
@@ -28,6 +27,7 @@ spec:
           provider: azure
           bucket: "velero-backups" # e.g., velero-backups-12345
           config:
+            useAAD: true
             resourceGroup: "rg-aks-kubenet-demo"
             storageAccount: "kushalvelerobackup"
             subscriptionId: "c29cf98c-ebc4-49e6-bc42-a01527606175"
@@ -48,8 +48,9 @@ spec:
         create: true
         name: velero # Velero's default Service Account name
         annotations:
-          azure.workload.identity/client-id: "5bae3c20-8ea1-4a5c-beaf-83ae2b512e1b" # <-- Use your Terraform UAMI Client ID
+          azure.workload.identity/client-id: "c7ebe9d3-8fb4-405f-b158-945236b96adc" # <-- Use your Terraform UAMI Client ID
           azure.workload.identity/tenant-id: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
+        labels:
           azure.workload.identity/use: "true"
 
     podLabels:
@@ -61,9 +62,10 @@ spec:
     initContainers:
       - name: velero-plugin-for-microsoft-azure
         image: velero/velero-plugin-for-microsoft-azure:v1.12.2
+        imagePullPolicy: IfNotPresent
         volumeMounts:
-          - name: plugins
-            mountPath: /target
+          - mountPath: /target
+            name: plugins
 
     kubectl:
       - image:
