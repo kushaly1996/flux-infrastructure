@@ -26,6 +26,7 @@ spec:
         - name: azure
           provider: azure
           bucket: "velero-backups" # e.g., velero-backups-12345
+          default: false
           config:
             useAAD: true
             resourceGroup: "rg-aks-kubenet-demo"
