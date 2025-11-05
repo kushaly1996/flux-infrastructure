@@ -50,9 +50,8 @@ spec:
         annotations:
           azure.workload.identity/client-id: "c7ebe9d3-8fb4-405f-b158-945236b96adc" # <-- Use your Terraform UAMI Client ID
           azure.workload.identity/tenant-id: "6f818e3d-ede0-4045-a285-0a6c77b4cabb"
-
-    podLabels:
-      azure.workload.identity/use: "true"
+        labels:
+          azure.workload.identity/use: "true"
       
     credentials:
       useSecret: false
