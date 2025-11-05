@@ -22,7 +22,7 @@ spec:
         - velero/velero-plugin-for-microsoft-azure:v1.7.0 # Required plugin for Azure
       
       # Backup Storage Location (Blob Storage)
-      backupStorageLocations:
+      backupStorageLocation:
         - name: azure
           provider: azure
           bucket: "velero-backups" # e.g., velero-backups-12345
